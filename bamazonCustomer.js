@@ -10,7 +10,7 @@ var connection = mysql.createConnection({
   database: "bamazon_db"
 });
 
-connection.connect(function(err) {
+connection.connect(function(err)
   if (err) throw err;
   console.log("connected as id " + connection.threadId);
   
@@ -19,3 +19,4 @@ connection.connect(function(err) {
     console.log (JSON.stringify(res, null,2))
   })
 });
+
