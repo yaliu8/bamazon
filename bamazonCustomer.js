@@ -18,6 +18,7 @@ connection.connect(function(err) {
   queryBamazon();
 });
 
+// Listing items for sale
 function queryBamazon() {
   console.log("Items up for sale");
   console.log("------------------");
@@ -30,11 +31,12 @@ function queryBamazon() {
   });
 }
 
+// Prompting user to make an action
 var mainMenu = function() {
   inquirer.prompt([
     {
       type: "list",
-      message: "Please select:",
+      message: "Hello Customer! Welcome to Bamazon. Please select what you'd like to do today:",
       choices: ["Buy an Item", "Exit"],
       name: "choice"
     }
@@ -50,6 +52,7 @@ var mainMenu = function() {
   });
 };
 
+// Buy items function
 var buyItem = function() {
   inquirer.prompt([
     {
@@ -71,15 +74,33 @@ var buyItem = function() {
         return console.log(err);
       }
       if (res[0].quantity < argument.quantity) {
-        return console.log("ERROR: Sorry, Insufficient store quantity. Your order cannot be placed.");
+        console.log("ERROR: Sorry, Insufficient store quantity. Your order cannot be placed.");
+        nextOrder();
       } 
+      else {
       connection.query("UPDATE products SET quantity = ? WHERE item_id = ?", [newQuantity, argument.item]);
       console.log("Your order for " + numSold + " units of " + res[0].product_name + " has been placed.");
       console.log("You spent $" + totalCost + " on your purchase.");
       console.log("Thank you for shopping with Bamazon. Please come again!");
-      connection.end();
+      nextOrder();
+      }
     });
   });
 };
 
-
+// Prompt new order
+function nextOrder() {
+  inquirer.prompt({
+          name: 'choice',
+          message: 'Would you like to place another order?',
+          type: 'list',
+          choices: ['Yes', 'No']
+      })
+      .then(function(answers) {
+          if (answers.choice === 'Yes') {
+              queryBamazon();
+          } else {
+              connection.end();
+          }
+      });
+};
