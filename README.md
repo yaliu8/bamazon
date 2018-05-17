@@ -48,7 +48,7 @@ INSERT INTO products (product_name, department_name, price, quantity) values ("d
 ```
 ## Customer View
 
-[Click to watch on GitHub] (https://www.google.com)
+[Click to watch on GitHub] (https://github.com/yaliu8/bamazon/blob/master/ScreenRecordings/BamazonCustomer_ScreenRecording.mov)
 
 The app prompts the customer to buy an item or exit. If the user chooses to buy an item they receive two messages:
 1. To state the ID of the item they would like to buy
@@ -59,7 +59,7 @@ The results are
 2. If there is not enough stock quantity, then the user is prompted with an "insufficient quantity" message and the transaction is ended.
 
 ## Manager View
-[Click to watch on GitHub] (https://www.google.com)
+[Click to watch on GitHub] (https://github.com/yaliu8/bamazon/blob/master/ScreenRecordings/BamazonManager_ScreenRecording.mov)
 
 The app prompts the manager with a list of choices:
 1. View all items for sale
@@ -68,7 +68,7 @@ The app prompts the manager with a list of choices:
 4. Add new product to database
 
 ## Supervisor View
-[Click to watch on GitHub] (https://www.google.com)
+[Click to watch on GitHub] (https://github.com/yaliu8/bamazon/blob/master/ScreenRecordings/BamazonSupervisor_ScreenRecording.mov)
 
 New table created called departments. The sql scheme for the database and table is:
 ```
